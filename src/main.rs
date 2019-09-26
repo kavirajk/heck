@@ -26,7 +26,7 @@ fn main() {
 
     let storage = redis::Client::open("redis://127.0.0.1").expect("failed to get redis client");
 
-    let server = Server::new(cfg, storage);
+    let server = Server::new(&cfg, storage);
 
     println!("heck server starting...");
 

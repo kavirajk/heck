@@ -3,13 +3,13 @@ use std::fs::File;
 use serde::{Deserialize, Serialize};
 use serde_yaml;
 
-#[derive(Deserialize, Serialize, Debug)]
+#[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct Config {
     pub servers: Vec<Server>,
     pub interval: time::Duration,
 }
 
-#[derive(Deserialize, Serialize, Debug)]
+#[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct Server {
     pub name: String,
     pub endpoint: String,

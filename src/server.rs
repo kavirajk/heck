@@ -6,14 +6,14 @@ use reqwest;
 use crate::config::Config;
 use crate::storage::store_health_check;
 
-pub struct Server {
-    pub config: Config,
+pub struct Server<'s> {
+    pub config: &'s Config,
     pub storage: redis::Client
 }
 
 
-impl Server {
-    pub fn new(cfg: Config, storage: redis::Client) -> Self {
+impl<'a> Server<'a> {
+    pub fn new(cfg: &'a Config, storage: redis::Client) -> Self {
         Server{
             config: cfg,
             storage: storage
@@ -42,8 +42,7 @@ impl Server {
                     &origin.name,
                     self.do_health_check(&origin.endpoint, origin.timeout).unwrap(),
                     self.config.interval,
-                );
-                // println!("server: {}: is_healthy: {}", origin.name, self.do_health_check(&origin.endpoint, origin.timeout).unwrap())
+                ).expect(&format!("unable to store health info for {}", origin.name));
         }
             thread::sleep(self.config.interval);
         }
