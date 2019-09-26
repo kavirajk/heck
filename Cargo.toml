@@ -1,0 +1,15 @@
+[package]
+name = "heck"
+version = "0.1.0"
+authors = ["Kaviraj <kavirajkanagaraj@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+reqwest = "0.9.20"
+num = "0.1.27"
+serde = "1.0"
+serde_yaml = "0.8"
+clap = "2.33.0"
+redis = "0.12.0"

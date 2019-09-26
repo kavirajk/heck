@@ -1,0 +1,14 @@
+servers:
+  - name: "httpbin"
+    endpoint: "https://httpbin.org/anything"
+    timeout:
+      secs: 5
+      nanos: 0
+  - name: "mitra"
+    endpoint: "http://mitra.s.housinganywhere.com/healthz"
+    timeout:
+      secs: 10
+      nanos: 0
+interval:
+  secs: 5
+  nanos: 0
